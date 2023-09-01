@@ -569,4 +569,4 @@ plotInfiniteHorizon(5)
 
 """
 if __name__ == '__main__':
-    plotFiniteHorizon(1)
+    plotFiniteHorizon(4)
