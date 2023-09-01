@@ -1,5 +1,5 @@
 from DES_Python.rngs import random, selectStream
-from DES_Python.rvgs import Exponential
+from DES_Python.rvgs import Exponential, TruncatedNormal, Normal
 from configurations import P_NEW, P_OLD_H, P_OLD_T, SERVICE_TIME_HANDWASH, SERVICE_TIME_INTERIORWASH, \
     SERVICE_TIME_TOUCHLESS, SERVICE_TIME_POLISHING, ABANDON_TIME_1, ABANDON_TIME_2
 
@@ -89,7 +89,15 @@ def getOldCarArrivalTouchless(arrival, interTime):
 
 def GetServiceHandWash(start):
     selectStream(3)
-    return start + Exponential(SERVICE_TIME_HANDWASH)
+    mean = SERVICE_TIME_HANDWASH # Media in secondi
+    std_dev = 10.0  * 60.0 # Deviazione standard in secondi
+    a = 0.0  # tempi di servizio non possono essere negativi
+    b = 45.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
+    #return start + Exponential(SERVICE_TIME_HANDWASH)
+
+    return start + TruncatedNormal(mean, std_dev, a, b)
+   # return start + Normal(mean, std_dev)
+
 
 
 def GetServiceTouchless(start):

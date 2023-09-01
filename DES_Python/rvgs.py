@@ -200,19 +200,20 @@ def Normal(m, s):
     return (m + s * z)
 
 def TruncatedNormal(mean, std_dev, a, b):
-    print("\n-----")
-    print("ciao")
-    print("mean =" ,mean)
-    print("std_dev",std_dev)
+    #print("\n-----")
+    #print("ciao")
+    #print("mean =" ,mean)
+    #print("std_dev",std_dev)
     alpha = cdfNormal(mean, std_dev, a)
     beta = 1.0 - cdfNormal(mean, std_dev, b)
-    print("alpha =" ,alpha)
-    print("beta",beta)
+    #print("alpha =" ,alpha)
+    #print("beta",beta)
     u = Uniform(alpha, 1.0 - beta)
-    print("u =", u)
+    #print("u =", u)
 
     distr = idfNormal(mean, std_dev, u)
-    print("distr ==", distr)
+    #print("distr ==", distr)
+    return distr
 
 
 

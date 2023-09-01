@@ -38,7 +38,7 @@ def plotInfiniteHorizon(centro):
     statistiche.append(nmPerdite)
     statistiche.append(probDiPerdita)
 
-    filename = "../data/infinite/servicenode" + str(centro) + ".dat"
+    filename = "./data/infinite/node" + str(centro) + ".dat"
     f = open(filename, "r")
 
     numeroBatch = 0
@@ -553,7 +553,7 @@ def plotFiniteHorizon(centro):
 
     return 0
 
-plotFiniteHorizon(4)
+#plotFiniteHorizon(4)
 
 """
 plotFiniteHorizon(1)
@@ -568,3 +568,5 @@ plotInfiniteHorizon(4)
 plotInfiniteHorizon(5)
 
 """
+if __name__ == '__main__':
+    plotFiniteHorizon(1)
