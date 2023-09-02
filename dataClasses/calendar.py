@@ -89,27 +89,28 @@ def getOldCarArrivalTouchless(arrival, interTime):
 
 def GetServiceHandWash(start):
     selectStream(3)
-    mean = SERVICE_TIME_HANDWASH # Media in secondi
-    std_dev = 7.0  * 60.0 # Deviazione standard in secondi
+    mean = SERVICE_TIME_HANDWASH  # Media in secondi (30 min)
+    std_dev = 5.0 * 60.0  # Deviazione standard in secondi
     a = 0.0  # tempi di servizio non possono essere negativi
-    b = 40.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
-    #return start + Exponential(SERVICE_TIME_HANDWASH)
+    b = 36.0 * 60.0  # 30+5= 35 minuti --> tempi di servizio sono minori di 36 --> 36*60 secondi
+    # return start + Exponential(SERVICE_TIME_HANDWASH)
 
     return start + TruncatedNormal(mean, std_dev, a, b)
-   # return start + Normal(mean, std_dev)
 
+
+# return start + Normal(mean, std_dev)
 
 
 def GetServiceTouchless(start):
     selectStream(4)
-    mean = SERVICE_TIME_TOUCHLESS  # Media in secondi
+    mean = SERVICE_TIME_TOUCHLESS  # Media in secondi (10 min)
     std_dev = 2.0 * 60.0  # Deviazione standard in secondi
     a = 0.0  # tempi di servizio non possono essere negativi
     b = 14.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
     # return start + Exponential(SERVICE_TIME_HANDWASH)
 
     return start + TruncatedNormal(mean, std_dev, a, b)
-    #return start + Exponential(SERVICE_TIME_TOUCHLESS)
+    # return start + Exponential(SERVICE_TIME_TOUCHLESS)
 
 
 def GetServicePolishing(start):
@@ -121,7 +122,7 @@ def GetServicePolishing(start):
     # return start + Exponential(SERVICE_TIME_HANDWASH)
 
     return start + TruncatedNormal(mean, std_dev, a, b)
-    #return start + Exponential(SERVICE_TIME_POLISHING)
+    # return start + Exponential(SERVICE_TIME_POLISHING)
 
 
 def GetServiceInteriorWash(start):
@@ -133,7 +134,7 @@ def GetServiceInteriorWash(start):
     # return start + Exponential(SERVICE_TIME_HANDWASH)
 
     return start + TruncatedNormal(mean, std_dev, a, b)
-    #return start + Exponential(SERVICE_TIME_INTERIORWASH)
+    # return start + Exponential(SERVICE_TIME_INTERIORWASH)
 
 
 def getAbandonHandWash(start):
