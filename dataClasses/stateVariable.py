@@ -1,3 +1,4 @@
+
 class StateVariables:   # rappresenta il singolo blocco / centro
     def __init__(self, number_in_center, server_state):
         self.number_in_center = number_in_center  # popolazione totale nel centro

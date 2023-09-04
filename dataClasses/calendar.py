@@ -69,72 +69,59 @@ class NextCompletion:
         self.completionTime = completion_time  # double
 
 
-def getNewCarArrivalHandWash(arrival, interTime):
+def getNewCarArrivalHandWash(arrival, inter_time):
     selectStream(0)  # rngs.py
-    arrival += Exponential(interTime / P_NEW)
+    arrival += Exponential(inter_time / P_NEW)
     return arrival
 
 
-def getOldCarArrivalHandWash(arrival, interTime):
+def getOldCarArrivalHandWash(arrival, inter_time):
     selectStream(1)  # rngs.py
-    arrival += Exponential(interTime / P_OLD_H)
+    arrival += Exponential(inter_time / P_OLD_H)
     return arrival
 
 
-def getOldCarArrivalTouchless(arrival, interTime):
+def getOldCarArrivalTouchless(arrival, inter_time):
     selectStream(2)  # rngs.py
-    arrival += Exponential(interTime / P_OLD_T)
+    arrival += Exponential(inter_time / P_OLD_T)
     return arrival
+
 
 
 def GetServiceHandWash(start):
     selectStream(3)
-    mean = SERVICE_TIME_HANDWASH  # Media in secondi (30 min)
-    std_dev = 5.0 * 60.0  # Deviazione standard in secondi
-    a = 0.0  # tempi di servizio non possono essere negativi
-    b = 36.0 * 60.0  # 30+5= 35 minuti --> tempi di servizio sono minori di 36 --> 36*60 secondi
-    # return start + Exponential(SERVICE_TIME_HANDWASH)
-
+    mean = SERVICE_TIME_HANDWASH    # Media in secondi (30 min)
+    std_dev = 5.0 * 60.0            # Deviazione standard in secondi
+    a = 0.0                         # tempi di servizio non possono essere negativi
+    b = 43.0 * 60.0
     return start + TruncatedNormal(mean, std_dev, a, b)
-
-
-# return start + Normal(mean, std_dev)
 
 
 def GetServiceTouchless(start):
     selectStream(4)
-    mean = SERVICE_TIME_TOUCHLESS  # Media in secondi (10 min)
-    std_dev = 2.0 * 60.0  # Deviazione standard in secondi
-    a = 0.0  # tempi di servizio non possono essere negativi
-    b = 14.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
-    # return start + Exponential(SERVICE_TIME_HANDWASH)
-
+    mean = SERVICE_TIME_TOUCHLESS
+    std_dev = 5.0 * 60.0
+    a = 0.0
+    b = 25.0 * 60.0
     return start + TruncatedNormal(mean, std_dev, a, b)
-    # return start + Exponential(SERVICE_TIME_TOUCHLESS)
 
 
 def GetServicePolishing(start):
     selectStream(5)
-    mean = SERVICE_TIME_POLISHING  # Media in secondi (2 min)
-    std_dev = 1.0 * 60.0  # Deviazione standard in secondi
-    a = 0.0  # tempi di servizio non possono essere negativi
-    b = 4.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
-    # return start + Exponential(SERVICE_TIME_HANDWASH)
-
+    mean = SERVICE_TIME_POLISHING
+    std_dev = 1.0 * 60.0
+    a = 0.0
+    b = 4.0 * 60.0
     return start + TruncatedNormal(mean, std_dev, a, b)
-    # return start + Exponential(SERVICE_TIME_POLISHING)
 
 
 def GetServiceInteriorWash(start):
     selectStream(6)
-    mean = SERVICE_TIME_INTERIORWASH  # Media in secondi (5 min)
-    std_dev = 3.0 * 60.0  # Deviazione standard in secondi
-    a = 0.0  # tempi di servizio non possono essere negativi
-    b = 10.0 * 60.0  # 30+3= 33 minuti --> tempi di servizio sono minori di 35 --> 35*60 secondi
-    # return start + Exponential(SERVICE_TIME_HANDWASH)
-
+    mean = SERVICE_TIME_INTERIORWASH
+    std_dev = 3.0 * 60.0
+    a = 0.0
+    b = 10.0 * 60.0
     return start + TruncatedNormal(mean, std_dev, a, b)
-    # return start + Exponential(SERVICE_TIME_INTERIORWASH)
 
 
 def getAbandonHandWash(start):

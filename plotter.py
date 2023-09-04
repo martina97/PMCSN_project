@@ -410,7 +410,8 @@ def plotFiniteHorizon(centro):
                 sommatoria = sommatoria + statistiche[stat][rep][value]
             media = float(sommatoria / REPLICATIONS)
             if stat == 4:
-                stats[stat].append(-media)
+                #stats[stat].append(-media)
+                stats[stat].append(media)
             else:
                 stats[stat].append(media)
     for i in range(0, STATISTICS):
@@ -465,6 +466,7 @@ def plotFiniteHorizon(centro):
     y = stats[4]
     y2 = 300
     x1 = 54  # time slot
+    plt.figure().set_figwidth(12)
     plt.plot(y, color='b', label="Tempo di attesa")
     plt.xticks(fontsize=FONTNUM)
     plt.yticks(fontsize=FONTNUM)
@@ -539,6 +541,7 @@ def plotFiniteHorizon(centro):
     #print("y = ",y)
     y2 = 0.2
     x1 = 54
+    plt.figure().set_figwidth(12)
     plt.plot(y, color='b', label = "Probabilità perdita")
     plt.xticks(fontsize=FONTNUM)
     plt.yticks(fontsize=FONTNUM)
@@ -553,20 +556,6 @@ def plotFiniteHorizon(centro):
 
     return 0
 
-#plotFiniteHorizon(4)
 
-"""
-plotFiniteHorizon(1)
-plotFiniteHorizon(2)
-plotFiniteHorizon(3)
-plotFiniteHorizon(4)
-plotFiniteHorizon(5)
-plotInfiniteHorizon(1)
-plotInfiniteHorizon(2)
-plotInfiniteHorizon(3)
-plotInfiniteHorizon(4)
-plotInfiniteHorizon(5)
-
-"""
 if __name__ == '__main__':
     plotFiniteHorizon(4)
